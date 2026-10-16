@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پیر حضرت ولي چینا کاپرسیم فابریکه</title>
+<style>
+:root{--bg:#f3f6fb;--navy:#10243b;--blue:#1459a8;--gold:#e6ad35;--card:#fff;--muted:#66758a;--line:#e3e9f1;--green:#16845b;--red:#c64242}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Arabic",sans-serif;background:var(--bg);color:#17283d}
+header{background:linear-gradient(120deg,#10243b,#1459a8);color:white;padding:22px 18px 26px;border-radius:0 0 24px 24px}
+.brand{font-size:12px;letter-spacing:.5px;color:#f5cc70;font-weight:bold}.title{font-size:22px;font-weight:800;margin:9px 0}.subtitle{font-size:13px;color:#d9e6f7}
+.wrap{max-width:1000px;margin:auto;padding:16px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:-8px}
+.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 5px 18px #122b4710}
+.stat small{color:var(--muted);display:block;margin-bottom:8px}.stat strong{font-size:21px}.stat .symbol{float:left;color:var(--blue);font-size:22px}
+nav{display:flex;gap:8px;overflow:auto;padding:15px 0 12px}
+nav button{border:1px solid var(--line);background:white;border-radius:12px;padding:11px 14px;white-space:nowrap;font-weight:bold;color:#34475d}
+nav button.active{background:var(--navy);color:white;border-color:var(--navy)}
+.panel{margin:8px 0 14px}.panel h2{font-size:18px;margin:0 0 14px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{font-size:13px;color:#4b5d72;display:block;margin-bottom:5px}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d8e1ec;border-radius:10px;font:inherit;background:#fff;min-width:0}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+button.primary{background:var(--blue);color:white;border:0;border-radius:10px;padding:12px 16px;font-weight:bold}
+button.secondary{background:#edf3fa;color:#24415f;border:1px solid #dbe5f1;border-radius:10px;padding:11px 14px}
+button.danger{background:#fff0f0;color:#a72c2c;border:1px solid #f2cccc;border-radius:9px;padding:7px 10px}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;padding:11px 7px;border-bottom:1px solid var(--line)}th{color:#617187;font-weight:bold;background:#f8fafd}
+.table-wrap{overflow:auto}.empty{color:var(--muted);text-align:center;padding:22px}.notice{font-size:12px;color:var(--muted);line-height:1.8;margin-top:12px}
+.badge{display:inline-block;border-radius:20px;padding:4px 8px;background:#e8f6ef;color:#14714e;font-size:11px}
+.hidden{display:none!important}.money{font-weight:bold;color:var(--green)}footer{text-align:center;color:#8794a5;font-size:12px;padding:20px}
+@media(min-width:650px){.stats{grid-template-columns:repeat(4,1fr)}.grid{grid-template-columns:repeat(3,1fr)}.title{font-size:28px}}
+</style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#10243b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<header><div class="wrap">
+<div class="brand">FACTORY MANAGEMENT • د فابریکې مدیریت</div>
+<div class="title">پیر حضرت ولي چینا کاپرسیم فابریکه</div>
+<div class="subtitle">د مشتریانو حسابونه، مواد، پیسې او تولید — په یوه ځای کې</div>
+</div></header>
+<main class="wrap">
+<section class="stats">
+<div class="stat"><span class="symbol">👥</span><small>ټول مشتریان</small><strong id="statCustomers">0</strong></div>
+<div class="stat"><span class="symbol">📦</span><small>د موادو توکي</small><strong id="statStock">0</strong></div>
+<div class="stat"><span class="symbol">💵</span><small>ټول پاتې پور</small><strong id="statDebt">0</strong></div>
+<div class="stat"><span class="symbol">🧾</span><small>د خرڅلاو ټول مبلغ</small><strong id="statSales">0</strong></div>
+</section>
+<nav id="tabs">
+<button class="active" data-tab="dashboard">کورپاڼه</button><button data-tab="customers">مشتریان</button><button data-tab="stock">د موادو موجودي</button><button data-tab="sales">خرڅلاو او بیل</button><button data-tab="money">د پیسو حساب</button><button data-tab="reports">راپورونه</button>
+</nav>
+<section id="dashboard" class="tab panel">
+<h2>د فابریکې لنډ راپور</h2>
+<p>ښه راغلاست! دلته د فابریکې مهم حسابونه وګوره او له لاندې برخو څخه کار واخله.</p>
+<div class="grid">
+<div><label>د نن ورځې یادښت</label><textarea id="dailyNote" rows="3" placeholder="د تولید، ماشین یا کار یادښت..."></textarea><div class="actions"><button class="primary" onclick="saveNote()">یادښت خوندي کړه</button></div></div>
+<div><label>چټک کار</label><div class="actions"><button class="secondary" onclick="showTab('customers')">＋ مشتری اضافه کړه</button><button class="secondary" onclick="showTab('stock')">＋ مواد اضافه کړه</button><button class="secondary" onclick="showTab('sales')">＋ خرڅلاو ثبت کړه</button></div><p class="notice">معلومات په همدې موبایل/براوزر کې خوندي کېږي. د بل موبایل لپاره جلا انتقال ته اړتیا ده.</p></div>
+</div>
+</section>
+<section id="customers" class="tab panel hidden">
+<h2>د مشتریانو حسابونه</h2>
+<div class="grid">
+<div><label>د مشتری نوم</label><input id="cName" placeholder="مثلاً: احمد خان"></div>
+<div><label>د ټیلیفون شمېره</label><input id="cPhone" inputmode="tel" placeholder="شمېره"></div>
+<div><label>پته / ښار</label><input id="cAddress" placeholder="پته"></div>
+</div><div class="actions"><button class="primary" onclick="addCustomer()">مشتری ثبت کړه</button></div>
+<div class="table-wrap"><table><thead><tr><th>نوم</th><th>شمېره</th><th>پته</th><th>عمل</th></tr></thead><tbody id="customerRows"></tbody></table></div>
+</section>
+<section id="stock" class="tab panel hidden">
+<h2>د مسو سیم او موادو موجودي</h2>
+<div class="grid">
+<div><label>د توکي نوم</label><input id="sName" placeholder="مثلاً: د مسو سیم"></div>
+<div><label>مقدار</label><input id="sQty" type="number" min="0" step="any" placeholder="0"></div>
+<div><label>واحد</label><select id="sUnit"><option>کیلوګرام</option><option>ټن</option><option>متر</option><option>رول</option><option>دانې</option></select></div>
+</div><div class="actions"><button class="primary" onclick="addStock()">مواد ثبت کړه</button></div>
+<div class="table-wrap"><table><thead><tr><th>توکی</th><th>موجود مقدار</th><th>واحد</th><th>عمل</th></tr></thead><tbody id="stockRows"></tbody></table></div>
+</section>
+<section id="sales" class="tab panel hidden">
+<h2>خرڅلاو او بیل</h2>
+<div class="grid">
+<div><label>مشتری</label><select id="saleCustomer"><option value="">مشتری وټاکه (اختیاري)</option></select></div>
+<div><label>د توکي نوم</label><input id="saleItem" placeholder="مثلاً: کاپرسیم"></div>
+<div><label>مقدار</label><input id="saleQty" type="number" min="0" step="any" placeholder="0"></div>
+<div><label>د واحد بیه</label><input id="salePrice" type="number" min="0" step="any" placeholder="0"></div>
+<div><label>ترلاسه شوې پیسې</label><input id="salePaid" type="number" min="0" step="any" placeholder="0"></div>
+<div><label>نېټه</label><input id="saleDate" type="date"></div>
+</div><div class="actions"><button class="primary" onclick="addSale()">خرڅلاو ثبت کړه</button></div>
+<div class="table-wrap"><table><thead><tr><th>نېټه</th><th>مشتری</th><th>توکی</th><th>مبلغ</th><th>ترلاسه</th><th>پاتې</th><th>عمل</th></tr></thead><tbody id="saleRows"></tbody></table></div>
+</section>
+<section id="money" class="tab panel hidden">
+<h2>د پیسو داخل او خارج</h2>
+<div class="grid">
+<div><label>ډول</label><select id="mType"><option value="in">داخلې پیسې</option><option value="out">مصرف / خارج</option></select></div>
+<div><label>مبلغ</label><input id="mAmount" type="number" min="0" step="any" placeholder="0"></div>
+<div><label>تفصیل</label><input id="mDesc" placeholder="مثلاً: د مسو اخیستل"></div>
+<div><label>نېټه</label><input id="mDate" type="date"></div>
+</div><div class="actions"><button class="primary" onclick="addMoney()">حساب ثبت کړه</button></div>
+<div class="table-wrap"><table><thead><tr><th>نېټه</th><th>ډول</th><th>تفصیل</th><th>مبلغ</th><th>عمل</th></tr></thead><tbody id="moneyRows"></tbody></table></div>
+</section>
+<section id="reports" class="tab panel hidden">
+<h2>راپورونه</h2><div class="grid">
+<div class="stat"><small>د خرڅلاو ټول مبلغ</small><strong id="rSales">0</strong></div>
+<div class="stat"><small>ترلاسه شوې پیسې</small><strong id="rPaid">0</strong></div>
+<div class="stat"><small>پاتې پورونه</small><strong id="rDebt">0</strong></div>
+<div class="stat"><small>داخلې پیسې</small><strong id="rIn">0</strong></div>
+<div class="stat"><small>مصارف</small><strong id="rOut">0</strong></div>
+<div class="stat"><small>خالص نغدي توپیر</small><strong id="rNet">0</strong></div>
+</div><div class="actions"><button class="secondary" onclick="exportData()">معلومات فایل ته ښکته کړه (JSON)</button><button class="danger" onclick="clearAll()">ټول معلومات پاک کړه</button></div>
+<p class="notice">دا لومړنۍ نسخه ده؛ د حسابونو د رسمي کارونې لپاره خپل معلومات په منظم ډول بیک‌اپ کړه او ارقام له رسیدونو سره پرتله کړه.</p>
+</section>
+<footer>د فابریکې د مدیریت ساده نسخه • معلومات یوازې په همدې براوزر کې ساتل کېږي</footer>
+</main>
+<script>
+const KEY='peer_copper_factory_v1';
+let db={customers:[],stock:[],sales:[],money:[],note:''};
+try{const saved=localStorage.getItem(KEY);if(saved)db={...db,...JSON.parse(saved)}}catch(e){}
+const $=id=>document.getElementById(id);
+const num=n=>Number(n||0);
+const fmt=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:2}).format(num(n));
+function persist(){localStorage.setItem(KEY,JSON.stringify(db));render()}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showTab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id))}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function addCustomer(){let name=$('cName').value.trim();if(!name)return alert('د مشتری نوم ولیکه');db.customers.push({id:Date.now(),name,phone:$('cPhone').value.trim(),address:$('cAddress').value.trim()});['cName','cPhone','cAddress'].forEach(x=>$(x).value='');persist()}
+function addStock(){let name=$('sName').value.trim(),qty=num($('sQty').value);if(!name||qty<0)return alert('د توکي نوم او سم مقدار ولیکه');db.stock.push({id:Date.now(),name,qty,unit:$('sUnit').value});$('sName').value='';$('sQty').value='';persist()}
+function addSale(){let item=$('saleItem').value.trim(),qty=num($('saleQty').value),price=num($('salePrice').value),paid=num($('salePaid').value);if(!item||qty<=0||price<0||paid<0)return alert('د توکي نوم، مقدار او بیه سم ولیکه');let total=qty*price;if(paid>total)return alert('ترلاسه شوې پیسې له ټول مبلغ څخه زیاتې دي');let c=db.customers.find(x=>String(x.id)===$('saleCustomer').value);db.sales.push({id:Date.now(),date:$('saleDate').value||new Date().toISOString().slice(0,10),customer:c?c.name:'—',item,qty,price,total,paid,debt:total-paid});['saleItem','saleQty','salePrice','salePaid'].forEach(x=>$(x).value='');persist()}
+function addMoney(){let amount=num($('mAmount').value),desc=$('mDesc').value.trim();if(amount<=0||!desc)return alert('مبلغ او تفصیل ولیکه');db.money.push({id:Date.now(),type:$('mType').value,amount,desc,date:$('mDate').value||new Date().toISOString().slice(0,10)});$('mAmount').value='';$('mDesc').value='';persist()}
+function del(type,id){if(confirm('دا ریکارډ پاک شي؟')){db[type]=db[type].filter(x=>x.id!==id);persist()}}
+function saveNote(){db.note=$('dailyNote').value;persist();alert('یادښت خوندي شو')}
+function sum(arr,field){return arr.reduce((a,x)=>a+num(x[field]),0)}
+function render(){
+$('statCustomers').textContent=db.customers.length;$('statStock').textContent=db.stock.length;$('statDebt').textContent=fmt(sum(db.sales,'debt'));$('statSales').textContent=fmt(sum(db.sales,'total'));
+$('customerRows').innerHTML=db.customers.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.phone)}</td><td>${esc(x.address)}</td><td><button class="danger" onclick="del('customers',${x.id})">پاک</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">تر اوسه مشتری نشته</td></tr>';
+$('saleCustomer').innerHTML='<option value="">مشتری وټاکه (اختیاري)</option>'+db.customers.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('');
+$('stockRows').innerHTML=db.stock.map(x=>`<tr><td>${esc(x.name)}</td><td>${fmt(x.qty)}</td><td>${esc(x.unit)}</td><td><button class="danger" onclick="del('stock',${x.id})">پاک</button></td></tr>`).join('')||'<tr><td colspan="4" class="empty">مواد نه دي ثبت شوي</td></tr>';
+$('saleRows').innerHTML=db.sales.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.customer)}</td><td>${esc(x.item)} (${fmt(x.qty)})</td><td>${fmt(x.total)}</td><td>${fmt(x.paid)}</td><td>${fmt(x.debt)}</td><td><button class="danger" onclick="del('sales',${x.id})">پاک</button></td></tr>`).join('')||'<tr><td colspan="7" class="empty">خرڅلاو نه دی ثبت شوی</td></tr>';
+$('moneyRows').innerHTML=db.money.map(x=>`<tr><td>${esc(x.date)}</td><td>${x.type==='in'?'داخل':'مصرف'}</td><td>${esc(x.desc)}</td><td>${fmt(x.amount)}</td><td><button class="danger" onclick="del('money',${x.id})">پاک</button></td></tr>`).join('')||'<tr><td colspan="5" class="empty">حساب نشته</td></tr>';
+let ins=sum(db.money.filter(x=>x.type==='in'),'amount'),outs=sum(db.money.filter(x=>x.type==='out'),'amount');
+$('rSales').textContent=fmt(sum(db.sales,'total'));$('rPaid').textContent=fmt(sum(db.sales,'paid'));$('rDebt').textContent=fmt(sum(db.sales,'debt'));$('rIn').textContent=fmt(ins);$('rOut').textContent=fmt(outs);$('rNet').textContent=fmt(ins-outs);$('dailyNote').value=db.note||'';
+}
+function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='factory-backup.json';a.click();URL.revokeObjectURL(url)}
+function clearAll(){if(confirm('ډاډه یې؟ ټول مشتریان، مواد او حسابونه به پاک شي.')){db={customers:[],stock:[],sales:[],money:[],note:''};persist()}}
+const today=new Date().toISOString().slice(0,10);$('saleDate').value=today;$('mDate').value=today;render();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));
+}
+</script>
+</body>
+</html>
